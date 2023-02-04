@@ -173,6 +173,8 @@ if (str_contains('http://quizizz.com/admin/quiz/608ee4a0a2dc99001d3a680e/n-j','h
     echo ('<br>');
 }
 //////////////////////////////////////////////////////
+echo ('задание 1');
+echo ('<br>');
 $arr_str=['12', '13', '14', '15', '16', '17', '18', '19'];
 $new_arr=[];
 foreach($arr_str as $item){
@@ -182,12 +184,20 @@ foreach($arr_str as $item){
 print_r($new_arr);
 echo ('<br>');
 
-$letter_arr=[range('a','z',1)];
-print_r($letter_arr);
-$number_arr=[range(1,26)];
+echo ('задание 2');
+echo ('<br>');
 
-$associated_arr=[];
+var_dump(array_combine(range('a','z'),range(1,26)));
+echo ('<br>');
 
+echo ('задание 3');
+echo ('<br>');
 
-print_r($associated_arr);
+$num_str="1213141516171819";
+$num_arr=str_split($num_str,2);
+
+var_dump(array_reduce($num_arr,function ($carry,$item){
+$carry+=$item;
+return $carry;
+},0));
 ////////////////////////////////////////////////////
