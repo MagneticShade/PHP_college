@@ -384,6 +384,6 @@
 // }
 // 	echo '</table>';
 
-var_dump($_REQUEST);
-$tmp=$_REQUEST;
-echo('<br>'.$tmp['first']+$tmp['second']+$tmp['third']);
+// var_dump($_REQUEST);
+// $tmp=$_REQUEST;
+// echo('<br>'.$tmp['first']+$tmp['second']+$tmp['third']);

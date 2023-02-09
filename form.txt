@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!-- <form action="handler.php" method="post">
-        <input type="text" name="first">
-        <input type="text" name="second">
-        <input type="text" name="third">
-        <input type="submit" value="ОТПРАВИТЬ">
-    </form> -->
-    <form action="not_index.php" method="POST">
+<form action="" method="get">
         <label for="text">Логин</label><input type="text" id="text" name="text">
         <label for="pass">Пароль</label><input type="password" id="pass" name="pass">
         <label for="about">О себе</label><textarea name="textarea" id="about" cols="30" rows="10"></textarea>
@@ -27,9 +12,13 @@
         <label for="woman">Женский</label><input type="radio" id="woman" value="woman" name="sex">
         <label for="js">Javascript</label><input type="checkbox" id="js" value="js" name="js">
         <label for="php">PHP</label><input type="checkbox" id="php" value="php" name="php">
-        <input type="submit" id="submit" value="Отправить" disabled>
+        <input type="submit" value="Отправить" disabled>
     </form>
-<script src="scritps.js"></script>
 
-</body>
-</html>
+
+form.submit()
+
+Пока все поля формы не заполнены, кнопка отправить не активна.
+После клика на кнопку данные не отправляются. Открываается модальное окно в котором выводятся все данные из формы и две кнопки - отправить и отменить.
+Если нажать отправить - модальное окно закрывается, форма скрывается, выводится сообщение в виде всех значений из $_GET.
+Если нажить отмена - модальное окно закрывается и мы возвращаемся в форму, где все поля заполнены.
