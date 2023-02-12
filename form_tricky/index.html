@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="background" class="invisible">
+    <div id="window2" class="hidden ">
+        <div class="modal">
+            <h1>подтвердите данные</h1>
+            <p class="conf" id="log_c"></p>
+            <p class="conf" id="pass_c"></p>
+            <p class="conf" id="about_c"></p>
+            <p class="conf" id="exp_c"></p>
+            <p class="conf" id="sex_c"></p>
+            <p class="conf" id="lang_c"></p>
+            <button type="submit" id="send" form="myForm" >Отправить</button>
+            <button  type="button" id="cancel"  >ОТМЕНА </button>
+        </div>
+    </div>
+</div>
+    <!-- <form action="handler.php" method="post">
+        <input type="text" name="first">
+        <input type="text" name="second">
+        <input type="text" name="third">
+        <input type="submit" value="ОТПРАВИТЬ">
+    </form> -->
+    <form id="myForm" action="../not_index.php" method="POST">
+        <label for="login">Логин</label><input type="text" id="login" name="login">
+        <label for="pass">Пароль</label><input type="password" id="pass" name="pass">
+        <label for="about">О себе</label><textarea name="about" id="about" cols="30" rows="10"></textarea>
+        <label for="select">Опыт работы, лет</label>
+        <select name="select" id="select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <label for="man">Мужской</label><input type="radio" id="man" value="man" name="sex">
+        <label for="woman">Женский</label><input type="radio" id="woman" value="woman" name="sex">
+        <label for="js">Javascript</label><input type="checkbox" id="js" value="js" name="language">
+        <label for="php">PHP</label><input type="checkbox" id="php" value="php" name="language">
+        <input type="submit" id="submit" value="Отправить" disabled>
+    </form>
+<script src="../form_tricky/scripts.js"></script>
+
+</body>
+</html>

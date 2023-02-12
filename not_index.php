@@ -12,7 +12,7 @@
 <!-- <?php
 $alphabet=['а'=>'A','б'=>'B','в'=>'V','г'=>'G','д'=>'D']
 ?>
-     <!-- <form action=""method="Get">
+      <form action=""method="Get">
 		<textarea name="test" id="" cols="30" rows="10"><?php
 			// if(empty($_REQUEST['test'])){
 			// $temp=preg_replace('#(а-я){1}#',$alphabet['{$1}'],$_REQUEST['test']);
