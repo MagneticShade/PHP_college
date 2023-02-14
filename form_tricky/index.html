@@ -18,7 +18,7 @@
             <p class="conf" id="exp_c"></p>
             <p class="conf" id="sex_c"></p>
             <p class="conf" id="lang_c"></p>
-            <button type="submit" id="send" form="myForm" >Отправить</button>
+            <button type="button" id="send" form="myForm" >Отправить</button>
             <button  type="button" id="cancel"  >ОТМЕНА </button>
         </div>
     </div>
@@ -29,7 +29,7 @@
         <input type="text" name="third">
         <input type="submit" value="ОТПРАВИТЬ">
     </form> -->
-    <form id="myForm" action="../not_index.php" method="POST">
+    <form id="myForm" action="../not_index.php" method="GET">
         <label for="login">Логин</label><input type="text" id="login" name="login">
         <label for="pass">Пароль</label><input type="password" id="pass" name="pass">
         <label for="about">О себе</label><textarea name="about" id="about" cols="30" rows="10"></textarea>
@@ -43,7 +43,7 @@
         <label for="woman">Женский</label><input type="radio" id="woman" value="woman" name="sex">
         <label for="js">Javascript</label><input type="checkbox" id="js" value="js" name="language">
         <label for="php">PHP</label><input type="checkbox" id="php" value="php" name="language">
-        <input type="submit" id="submit" value="Отправить" disabled>
+        <input type="submit" id="btnsubmit" value="Отправить" disabled>
     </form>
 <script src="../form_tricky/scripts.js"></script>
 

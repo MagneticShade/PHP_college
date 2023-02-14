@@ -1,6 +1,6 @@
 "use strict"
 let form= document.querySelector('form');
-let submit=document.getElementById('submit');
+let submit=document.getElementById('btnsubmit');
 let background=document.getElementById(`background`);
 let window_modal=document.getElementById(`window2`);
 
@@ -12,7 +12,10 @@ let sex_c=document.getElementById(`sex_c`);
 let lang_c=document.getElementById(`lang_c`);
 
 let cancel=document.getElementById('cancel');
-
+let send=document.getElementById('send');
+send.addEventListener('click',function () {
+    form.submit();
+})
 // function getFormValue(event) {
 //     event.preventDefault();
 //     let obj={};
