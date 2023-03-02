@@ -127,13 +127,16 @@ if(empty($_REQUEST)){
     }
     echo("</table>");
 }
-else{
+else if(isset($_REQUEST['user'])){
 
     $login=$_REQUEST["user"];
     $age=$_REQUEST["age"];
     $querry=mysqli_fetch_assoc(mysqli_query($link,"SELECT * FROM test WHERE (name_id='$login' and age='$age')"));
     if(isset($querry)){
-        print_r($querry);
+        ?>
+        <a href="index.php"><button>выйти</button></a>
+        <a href="edit.php?new"><button>добавить новую строку</button></a>
+        <?php
         echo("<table border=1>");
         foreach($holder as $elem1){
             echo("<tr>");
@@ -142,13 +145,37 @@ else{
             }
             $id=$elem1["id"];
             echo("<td> <a href='?del=$id'>Удалить</a></td>");
-            echo("<td> <a href='?upd=$id'>Обновить</a></td>");
+            echo("<td> <a href='edit.php?upd=$id'>Обновить</a></td>");
             echo('</tr>');
         }
         echo("</table>");
     }
+    
     else{
-        echo("ababab");
+        ?>
+         <form method="POST">
+        <input value="user" type="text" name="user" >
+        <input value="56" type="text" name="age" >
+        <input type="submit" id="send" value="send">
+    </form>
+    <?php
+        echo("неправильный логин или пароль");
+        echo("<table border=1>");
+    foreach($holder as $elem1){
+        echo("<tr>");
+        foreach($elem1 as $elem ){
+            echo("<td>".$elem."</td>");
+        }
+        $id=$elem1["id"];
+        echo('</tr>');
+    }
+    echo("</table>");
     }
 }
+if(isset($_REQUEST['del'])){
+    $del_id=$_REQUEST['del'];
+    mysqli_query($link,"DELETE FROM test WHERE test.id=$del_id");
+    header("location:index.php");
+}
 ?>
+

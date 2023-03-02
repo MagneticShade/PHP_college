@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    display: flex;
+    justify-content: end;
+    height: 100px;
+    background-color: palevioletred;
+}
+main{
+    width: 100vw;
+    height: 87vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#card_holder{
+    background-color: aqua;
+    width:1000px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+}
