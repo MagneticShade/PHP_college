@@ -2,15 +2,16 @@
     margin: 0;
     padding: 0;
 }
+
 header{
     display: flex;
     justify-content: end;
-    height: 100px;
+    height: 13vh;
     background-color: palevioletred;
 }
 main{
     width: 100vw;
-    height: 87vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,8 +19,13 @@ main{
 }
 #card_holder{
     background-color: aqua;
-    width:1000px;
-    height: 600px;
+    width:60%;
     display: flex;
+    gap: 20px;
     flex-wrap: wrap;
+}
+.card{
+    height: 380px;
+    width: 300px;
+    background-color: blueviolet;
 }
