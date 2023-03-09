@@ -1,6 +1,20 @@
 <?php
 error_reporting(E_ALL);
-include_once("php/link.php")
+include_once("php/link.php");
+
+if(isset($_REQUEST['pagen'])){
+$pageno= $_REQUEST['pagen'];
+}
+else{
+    $pageno=1;
+}
+$size_page=4;
+$offset=($pageno-1)*$size_page;
+$ammount_cypher=(mysqli_query($link,"SELECT COUNT(*) FROM requests")); 
+$ammount=mysqli_fetch_array($ammount_cypher)[0];
+$total_pages=ceil($ammount/$size_page);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +33,7 @@ include_once("php/link.php")
         <div id="card_holder">
 
        <?
-       $res=mysqli_query($link,'SELECT
+       $res=mysqli_query($link,"SELECT
    	requests.timestamp,
     requests.pet_name,
     requests.img_before_src,
@@ -29,8 +43,8 @@ FROM
     requests
 JOIN categories ON requests.category_id = categories.id
 WHERE
-    requests.status = "Услуга оказана"
-LIMIT 4');
+    requests.status = 'Услуга оказана'
+LIMIT 4 OFFSET $offset");
 
        $array=mysqli_fetch_assoc($res);
        while($array){
@@ -41,8 +55,10 @@ LIMIT 4');
         $img_after='source/медиа/Media/images/животные/'.$array["img_after_src"];
 
         echo("<div class='card'>
-        <img src='$img_before' alt=''>
-        <img src='$img_after' alt=''>
+        <div class='slide'>
+            <img src='$img_before'class='img_b' width=300px height=300px alt=''>
+            <img src='$img_after' class='img_a' width=300px height=300px alt=''>
+        </div>
         <div class='description'>
             <h2 class='time'>$time</h2>
             <h2 class='name'>$pet_name</h2>
@@ -55,6 +71,17 @@ LIMIT 4');
         
     
         </div>
+        <a href="?pagen=1">первая</a>
+        <a href="<?php if($pageno<=1){echo '#';}else{
+            echo"?pagen=".($pageno-1);}?>">назад</a>
+        <a href="<?php
+        if($pageno>=$total_pages){
+            echo('#');
+        }else{
+            echo"?pagen=".($pageno+1);
+        }
+        ?>">след</a>
+        <a href="?pagen=<?php echo $total_pages;?>">последняя</a>
     </main>
     <script src="scripts/scripts.js"></script>
 </body>

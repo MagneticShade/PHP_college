@@ -18,6 +18,7 @@ main{
     justify-content: center;
 }
 #card_holder{
+    transition: all 0.2s ease-in-out;
     background-color: aqua;
     width:60%;
     display: flex;
@@ -25,7 +26,26 @@ main{
     flex-wrap: wrap;
 }
 .card{
+    position: relative;
     height: 380px;
     width: 300px;
     background-color: blueviolet;
+    overflow: hidden;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+   
+}
+.description{
+    align-self: end;
+}
+.slide{
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    position: absolute;
+    left:0;
+    
+}
+.slide:hover{
+    transition: all 0.2s ease-in-out;
+    left:-300px;
 }
