@@ -27,8 +27,32 @@ $total_pages=ceil($ammount/$size_page);
 </head>
 <body>
     <header>
-        <a href="">Вход</a>
+        <a id="login" href="#" >Вход</a>
+        <p id="login_place">Гость</p>
     </header>
+    <dialog id="log_window">
+    <form action="" method="POST">
+      <fieldset>
+        <legend>Форма входа</legend>
+
+        <div>
+          <label for="login">Логин </label>
+          <input id="login" name="login" type="text" required="">
+          <span></span>
+        </div>
+        <div>
+          <label for="pass">Пароль </label>
+          <input id="pass" name="pass" type="text" required="">
+          <span></span>
+        </div>
+        <div>
+          <span></span>
+        </div>
+        <div><button id='send'>Отправить</button></div>
+      </fieldset>
+    </form>
+        <span></span>
+    </dialog>
     <main>
         <div id="card_holder">
 
@@ -83,6 +107,20 @@ LIMIT 4 OFFSET $offset");
         ?>">след</a>
         <a href="?pagen=<?php echo $total_pages;?>">последняя</a>
     </main>
+    <?php
+    if(isset($_REQUEST['login']) && isset( $_REQUEST['pass'])){
+        $querry=mysqli_query($link,"SELECT * FROM `users` WHERE users.login='{$_REQUEST['login']}' and users.pass='{$_REQUEST['pass']}'");
+        $pelmen=mysqli_fetch_assoc($querry);
+        if($pelmen['status']=='admin'){
+            header("location:admin.php");
+            setcookie('name_ad',$pelmen["name"]);
+        }
+        else{
+            header("location:users.php");
+            setcookie('name_us',$pelmen["name"]);
+        }
+    }
+    ?>
     <script src="scripts/scripts.js"></script>
 </body>
 </html>
