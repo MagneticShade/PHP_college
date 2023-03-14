@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-include_once("php/link.php");
+include_once  ("php/link.php");
 
 if(isset($_REQUEST['pagen'])){
 $pageno= $_REQUEST['pagen'];
@@ -26,6 +26,20 @@ $total_pages=ceil($ammount/$size_page);
     <title>Document</title>
 </head>
 <body>
+<?php
+if(isset($_REQUEST['login']) && isset( $_REQUEST['pass'])){
+    $querry=mysqli_query($link,"SELECT * FROM `users` WHERE users.login='{$_REQUEST['login']}' and users.pass='{$_REQUEST['pass']}'");
+    $pelmen=mysqli_fetch_assoc($querry);
+    if($pelmen['status']=='admin'){
+        header("location:admin.php");
+        setcookie('name_ad',$pelmen["name"]);
+    }
+    else{
+        header("location:users.php");
+        setcookie('name_us',$pelmen["name"]);
+    }
+}
+?>
     <header>
         <a id="login" href="#" >Вход</a>
         <p id="login_place">Гость</p>
@@ -106,21 +120,9 @@ LIMIT 4 OFFSET $offset");
         }
         ?>">след</a>
         <a href="?pagen=<?php echo $total_pages;?>">последняя</a>
+        <p>выполнено заказов<span id="requests_sum"></span></p>
     </main>
-    <?php
-    if(isset($_REQUEST['login']) && isset( $_REQUEST['pass'])){
-        $querry=mysqli_query($link,"SELECT * FROM `users` WHERE users.login='{$_REQUEST['login']}' and users.pass='{$_REQUEST['pass']}'");
-        $pelmen=mysqli_fetch_assoc($querry);
-        if($pelmen['status']=='admin'){
-            header("location:admin.php");
-            setcookie('name_ad',$pelmen["name"]);
-        }
-        else{
-            header("location:users.php");
-            setcookie('name_us',$pelmen["name"]);
-        }
-    }
-    ?>
+
     <script src="scripts/scripts.js"></script>
 </body>
 </html>

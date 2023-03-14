@@ -1,8 +1,6 @@
 <?
-// require_once("link.php");
-// $querry=mysqli_query($link,"SELECT * FROM `users` WHERE users.login='{$_REQUEST['login']}' and users.pass='{$_REQUEST['pass']}'");
-// $pelmen=mysqli_fetch_assoc($querry);
-// $json = json_encode($pelmen);
-// if
-// echo($json);
+ require_once("link.php");
+ $querry=mysqli_query($link,"SELECT COUNT (*) FROM `requests` WHERE `requests.status`=3");
+ $requests_all=mysqli_fetch_array($querry);
+ echo($requests_all[0]);
 ?>
